@@ -12,7 +12,7 @@ const qTitle = document.getElementById('quiz-question');
 const qOptions = document.getElementById('quiz-options');
 const qProgress = document.getElementById('quiz-progress');
 const qCounter = document.getElementById('quiz-counter');
-const affiliateLink = "https://ev.braip.com/ref?sec=SUA_SEC_AQUI";
+const affiliateLink = "https://ev.braip.com/pv/lipygmyz/afi7g63d1q";
 
 function renderQuestion() {
   if (currentQ >= questions.length) return showResult();
