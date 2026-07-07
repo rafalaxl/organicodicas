@@ -9,19 +9,26 @@ const questions = [
 
 let currentQ = 0;
 const startBtn = document.getElementById('start-quiz-btn');
+const stickyStartBtn = document.getElementById('sticky-start-btn');
 const ctaContainer = document.getElementById('cta-container');
 const quizContainer = document.getElementById('quiz-container');
 const qTitle = document.getElementById('quiz-question');
 const qOptions = document.getElementById('quiz-options');
 const qProgress = document.getElementById('quiz-progress');
 const qCounter = document.getElementById('quiz-counter');
-const affiliateLink = "https://ev.braip.com/ref?sec=SUA_SEC_AQUI"; // Placeholder link
+const affiliateLink = "https://ev.braip.com/ref?sec=SUA_SEC_AQUI";
 
-startBtn.addEventListener('click', () => {
+const startQuiz = () => {
   ctaContainer.classList.add('hidden');
   quizContainer.classList.remove('hidden');
+  const stickyCta = document.getElementById('sticky-cta');
+  if(stickyCta) stickyCta.style.display = 'none';
+  quizContainer.scrollIntoView({ behavior: 'smooth' });
   renderQuestion();
-});
+};
+
+startBtn.addEventListener('click', startQuiz);
+if(stickyStartBtn) stickyStartBtn.addEventListener('click', startQuiz);
 
 function renderQuestion() {
   if (currentQ >= questions.length) return showResult();
@@ -48,15 +55,46 @@ function renderQuestion() {
 
 function showResult() {
   qProgress.style.width = '100%';
-  qCounter.textContent = "Concluído!";
-  qTitle.innerHTML = "Seu perfil indica benefício claro de uma solução que atua nos pilares da vitalidade.";
-  qTitle.className = "font-heading text-2xl font-bold mb-4 text-energy-500 leading-tight";
-  
-  const safeLink = encodeURI(affiliateLink);
+  qCounter.textContent = "Analisando perfil...";
+  qTitle.innerHTML = "Processando suas respostas...";
   qOptions.innerHTML = `
-    <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, é claro que você não está sozinho. Muitos homens enfrentam desafios semelhantes. Reacenda sua vitalidade, potência e confiança agora.</p>
-    <a href="${safeLink}" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
-      CLIQUE AQUI PARA CONHECER A SOLUÇÃO
-    </a>
+    <div class="flex flex-col items-center justify-center py-8">
+      <div class="w-12 h-12 border-4 border-tertiary border-t-accent rounded-full animate-spin mb-4"></div>
+      <p class="text-secondary font-medium animate-pulse">Avaliando pilares de vitalidade...</p>
+    </div>
   `;
+  
+  setTimeout(() => {
+    qCounter.textContent = "Concluído!";
+    qTitle.innerHTML = "Seu perfil indica benefício claro de uma solução que atua nos pilares da vitalidade.";
+    qTitle.className = "font-heading text-2xl font-bold mb-4 text-energy-500 leading-tight";
+    
+    const safeLink = encodeURI(affiliateLink);
+    qOptions.innerHTML = `
+      <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, é claro que você não está sozinho. Muitos homens enfrentam desafios semelhantes. Reacenda sua vitalidade, potência e confiança agora.</p>
+      <a href="${safeLink}" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+        CLIQUE AQUI PARA CONHECER A SOLUÇÃO
+      </a>
+    `;
+  }, 2500);
 }
+
+// Reading Progress & Sticky CTA Visibility
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  
+  const progressBar = document.getElementById('reading-progress-bar');
+  if (progressBar) progressBar.style.width = scrolled + '%';
+  
+  const stickyCta = document.getElementById('sticky-cta');
+  if (stickyCta && ctaContainer && !quizContainer.classList.contains('hidden') === false) {
+    const ctaTop = ctaContainer.getBoundingClientRect().top;
+    if (winScroll > 400 && ctaTop > window.innerHeight) {
+      stickyCta.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+    } else {
+      stickyCta.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+    }
+  }
+});
