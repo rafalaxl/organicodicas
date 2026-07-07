@@ -104,22 +104,10 @@
       <div class="text-center mb-16" id="cta-container">
         <h2 class="font-heading text-2xl font-bold mb-4">Quer descobrir seu nível de vitalidade?</h2>
         <p class="text-secondary mb-6">Faça um teste rápido, gratuito e confidencial.</p>
-        <button id="start-quiz-btn" class="bg-accent hover:bg-accent-hover text-inverse font-semibold py-4 px-8 rounded-full shadow-md transition-all duration-normal transform hover:-translate-y-1 w-full md:w-auto text-lg">
+        <a href="quiz.html" id="start-quiz-btn" class="inline-block bg-accent hover:bg-accent-hover text-inverse font-semibold py-4 px-8 rounded-full shadow-md transition-all duration-normal transform hover:-translate-y-1 w-full md:w-auto text-lg">
           FAZER MEU TESTE DE VITALIDADE
-        </button>
+        </a>
       </div>
-
-      <section id="quiz-container" class="hidden p-6 md:p-8 bg-secondary rounded-xl shadow-lg border border-border">
-        <div id="quiz-header" class="mb-6">
-          <div class="w-full bg-tertiary h-2 rounded-full overflow-hidden">
-            <div id="quiz-progress" class="bg-accent h-full w-0 transition-all duration-normal"></div>
-          </div>
-          <p id="quiz-counter" class="text-sm text-muted mt-2 text-right">Pergunta 1 de 6</p>
-        </div>
-        <h3 id="quiz-question" class="font-heading text-2xl font-bold mb-6 text-primary leading-tight"></h3>
-        <div id="quiz-options" class="flex flex-col gap-3"></div>
-      </section>
-
     </main>
     <footer class="mt-16 text-center text-sm text-muted pb-24 md:pb-8">
       <p>© 2026 Bem-Estar Masculino. Todos os direitos reservados.</p>
@@ -128,9 +116,9 @@
   </div>
 
   <div id="sticky-cta" class="fixed bottom-4 left-4 right-4 md:hidden z-40 transition-transform duration-300 transform translate-y-32 opacity-0 pointer-events-none">
-    <button id="sticky-start-btn" class="w-full bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-2xl">
+    <a href="quiz.html" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-2xl">
       FAZER TESTE DE VITALIDADE
-    </button>
+    </a>
   </div>
 
   <script src="js/main.js"></script>
