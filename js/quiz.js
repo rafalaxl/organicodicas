@@ -55,7 +55,7 @@ function showResult() {
     
     const safeLink = encodeURI(affiliateLink);
     qOptions.innerHTML = `
-      <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, é claro que você não está sozinho. Muitos homens enfrentam desafios semelhantes. Reacenda sua vitalidade, potência e confiança agora.</p>
+      <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, você se beneficiaria diretamente de ativos focados na circulação. Descubra a tecnologia líquida sublingual de absorção rápida que reativa o vigor e a firmeza física natural.</p>
       <a href="${safeLink}" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
         CLIQUE AQUI PARA CONHECER A SOLUÇÃO
       </a>
