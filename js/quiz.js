@@ -14,6 +14,17 @@ const qProgress = document.getElementById('quiz-progress');
 const qCounter = document.getElementById('quiz-counter');
 const affiliateLink = "https://ev.braip.com/pv/lipygmyz/afi7g63d1q";
 
+// Redireciona com um pequeno atraso para o Pixel enviar o InitiateCheckout
+window.irParaPaginaVendas = function(e, url) {
+  e.preventDefault();
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'InitiateCheckout');
+  }
+  setTimeout(() => {
+    window.location.href = url;
+  }, 200);
+};
+
 function renderQuestion() {
   if (currentQ >= questions.length) return showResult();
   
@@ -53,10 +64,14 @@ function showResult() {
     qTitle.innerHTML = "Seu perfil indica benefício claro de uma solução que atua nos pilares da vitalidade.";
     qTitle.className = "font-heading text-2xl font-bold mb-4 text-energy-500 leading-tight";
     
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead');
+    }
+    
     const safeLink = encodeURI(affiliateLink);
     qOptions.innerHTML = `
       <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, você se beneficiaria diretamente de ativos focados na circulação. Descubra a tecnologia líquida sublingual de absorção rápida que reativa o vigor e a firmeza física natural.</p>
-      <a href="${safeLink}" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+      <a href="${safeLink}" onclick="irParaPaginaVendas(event, '${safeLink}')" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
         CLIQUE AQUI PARA CONHECER A SOLUÇÃO
       </a>
     `;

@@ -18,3 +18,16 @@ window.addEventListener('scroll', () => {
     }
   }
 });
+
+// Rastreamento de início de Quiz no Meta Pixel
+document.addEventListener('DOMContentLoaded', () => {
+  const startQuizBtn = document.getElementById('start-quiz-btn');
+  if (startQuizBtn) {
+    startQuizBtn.addEventListener('click', () => {
+      if (typeof fbq !== 'undefined') {
+        fbq('trackCustom', 'InicioDoQuiz');
+      }
+    });
+  }
+});
+
