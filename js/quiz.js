@@ -12,7 +12,7 @@ const qTitle = document.getElementById('quiz-question');
 const qOptions = document.getElementById('quiz-options');
 const qProgress = document.getElementById('quiz-progress');
 const qCounter = document.getElementById('quiz-counter');
-const affiliateLink = "https://ev.braip.com/pv/lipygmyz/afi7g63d1q";
+const affiliateLink = "https://ev.braip.com/campanhas/cpa/camlg9247";
 
 // Redireciona com um pequeno atraso para o Pixel enviar o InitiateCheckout
 window.irParaPaginaVendas = function(e, url) {
