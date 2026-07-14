@@ -70,7 +70,7 @@ function showResult() {
     
     const safeLink = encodeURI(affiliateLink);
     qOptions.innerHTML = `
-      <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, você se beneficiaria diretamente de ativos focados na circulação. Descubra a tecnologia líquida sublingual de absorção rápida que reativa o vigor e a firmeza física natural.</p>
+      <p class="text-secondary mb-6 leading-relaxed">Com base nas suas respostas, o suporte nutricional focado na circulação é altamente recomendado para o seu perfil. Conheça o método líquido sublingual desenvolvido para auxiliar na manutenção da disposição e da vitalidade diária.</p>
       <a href="${safeLink}" onclick="irParaPaginaVendas(event, '${safeLink}')" class="block w-full text-center bg-accent hover:bg-accent-hover text-inverse font-bold py-4 px-6 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
         CLIQUE AQUI PARA CONHECER A SOLUÇÃO
       </a>
